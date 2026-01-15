@@ -1,5 +1,5 @@
 // CONFIGURATION
-const API_KEY = 'AIzaSyCXk2NyD_ZgUqwbQ56kDSdWYVVSLd0jm1g'; 
+const API_KEY = 'AIzaSyCBrAcC4AtxuySDYM-qWRP_IEoM5YeWHIs'; 
 const CHANNEL_ID = 'UCPckS5aNzwmhTpm9dibgL3A'; 
 const AD_INTERVAL = 4; // Show AD every 4 videos
 
