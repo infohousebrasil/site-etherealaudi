@@ -135,3 +135,62 @@ body {
     .hero h2 { font-size: 2rem; }
     .video-grid { grid-template-columns: 1fr; }
 }
+/* Text Sections Styling */
+.text-page {
+    margin-top: 40px;
+    animation: fadeIn 1s ease-in;
+}
+
+.text-content {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    line-height: 1.8;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+.text-content p {
+    margin-bottom: 20px;
+}
+
+.text-content strong {
+    color: var(--accent);
+}
+
+/* Blog Styling */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.blog-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.blog-card:hover {
+    border-color: var(--accent);
+    background: rgba(58, 134, 255, 0.05);
+}
+
+.blog-card h4 {
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-card p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Smooth Scrolling Offset */
+section {
+    scroll-margin-top: 100px;
+}
