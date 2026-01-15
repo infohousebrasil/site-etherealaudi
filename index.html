@@ -1,43 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethereal Audio - Seu Portal de Música Relaxante</title>
+    <title>Ethereal Audio | Immersive Soundscapes</title>
+    <meta name="description" content="Immersive ambient sounds, lofi beats, and ethereal melodies for study, sleep, and meditation.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@40400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://yt3.googleusercontent.com/ytc/AIdro_n-yS7s_N3Vb5z0fS_r2C1zY8z0d0c-w=s900-c-k-c0x00ffffff-no-rj" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-theme">
 
-    <header class="app-header">
-        <div class="header-content">
-            <img src="https://yt3.googleusercontent.com/ytc/AIdro_n-yS7s_N3Vb5z0fS_r2C1zY8z0d0c-w=s88-c-k-c0x00ffffff-no-rj" alt="Logo Ethereal Audio" class="channel-logo">
-            <h1>Ethereal Audio</h1>
+    <nav class="glass-header">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-dot"></span>
+                <h1>ETHEREAL <span>AUDIO</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="#feed" class="active">Feed</a>
+                <a href="https://youtube.com/@etherealaudi" target="_blank" class="yt-link">YouTube</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="app-main">
-        <section class="hero-section">
+    <main>
+        <header class="hero">
+            <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h2>Música para Relaxar, Meditar e Focar</h2>
-                <p>Mergulhe em sons suaves, melodias calmantes e paisagens sonoras ambientais. Perfeito para estudo, sono, meditação ou simplesmente para encontrar a paz interior.</p>
-                <a href="https://youtube.com/etherealaudi" target="_blank" class="youtube-button">Visitar Canal no YouTube</a>
+                <span class="badge">Official Portal</span>
+                <h2>Atmospheric Soundscapes for the Soul</h2>
+                <p>Welcome to your digital sanctuary. We curate and create high-quality ambient music, celestial melodies, and lofi experiences designed to help you focus, meditate, and find inner peace in a noisy world.</p>
+                <div class="hero-stats">
+                    <span><strong id="video-count">...</strong> Videos</span>
+                    <span><strong>Global</strong> Audience</span>
+                </div>
             </div>
-        </section>
+        </header>
 
-        <section class="video-feed-section">
-            <h3>Últimos Uploads</h3>
-            <div class="video-grid" id="videoFeed">
-                <p class="loading-message">Carregando vídeos...</p>
+        <section id="feed" class="content-section">
+            <div class="section-header">
+                <h3>Latest Releases</h3>
+                <div class="line"></div>
             </div>
-            <button id="loadMoreButton" class="load-more-button" style="display: none;">Carregar Mais</button>
+
+            <div class="video-grid" id="mainVideoFeed">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <div class="pagination">
+                <button id="btnLoadMore" class="primary-btn">
+                    <span>Load More Content</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+                </button>
+            </div>
         </section>
     </main>
 
-    <footer class="app-footer">
-        <p>&copy; 2024 Ethereal Audio. Todos os direitos reservados.</p>
-        <p>Desenvolvido com <span style="color: #ff0000;">&hearts;</span> e YouTube Data API.</p>
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h4>ETHEREAL AUDIO</h4>
+                <p>High-quality immersive sounds for modern living.</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2024 Ethereal Audio. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
