@@ -8,10 +8,10 @@ const videoFeed = document.getElementById('mainVideoFeed');
 const loadMoreBtn = document.getElementById('btnLoadMore');
 //novo codigo
 async function fetchYouTubeData(token = '') {
-    // Montamos a URL base primeiro
+    // Montamos a URL básica
     let url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=12&type=video`;
 
-    // SÓ adicionamos o pageToken se ele realmente existir (não estiver vazio)
+    // Só adicionamos o token se ele existir, para evitar o erro 400
     if (token) {
         url += `&pageToken=${token}`;
     }
@@ -20,10 +20,9 @@ async function fetchYouTubeData(token = '') {
         const response = await fetch(url);
         const data = await response.json();
 
-        // Se o Google devolver um erro, ele aparecerá aqui no console
         if (data.error) {
-            console.error("Erro da API do Google:", data.error);
-            videoFeed.innerHTML = `<p style="text-align:center; grid-column:1/-1">API Error: ${data.error.message}</p>`;
+            console.error("Erro detalhado:", data.error);
+            videoFeed.innerHTML = `<p style="text-align:center; grid-column:1/-1">Error: ${data.error.message}</p>`;
             return;
         }
 
@@ -35,10 +34,9 @@ async function fetchYouTubeData(token = '') {
             loadMoreBtn.style.display = nextPageToken ? 'flex' : 'none';
         }
     } catch (error) {
-        console.error("Erro de conexão:", error);
+        console.error("Erro na requisição:", error);
     }
 }
-
 function renderVideos(videos) {
     videos.forEach((video, index) => {
         const card = document.createElement('div');
