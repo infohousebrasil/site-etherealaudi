@@ -3,170 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethereal Audio - Oficial</title>
-    <style>
-        :root {
-            --yt-red: #ff0000;
-            --bg-dark: #0f0f0f;
-            --card-bg: #1e1e1e;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: white;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding-bottom: 50px;
-        }
-
-        header {
-            padding: 20px;
-            text-align: center;
-            background: linear-gradient(to bottom, #1e1e1e, var(--bg-dark));
-            border-bottom: 1px solid #333;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .feed {
-            max-width: 1100px;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            padding: 0 15px;
-        }
-
-        .video-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            background: #2a2a2a;
-        }
-
-        .thumb-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-        }
-
-        .thumb-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-info {
-            padding: 15px;
-        }
-
-        .video-title {
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .video-meta {
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        /* Espaço de Anúncio Dinâmico */
-        .ad-row {
-            grid-column: 1 / -1;
-            background: #1a1a1a;
-            border: 1px dashed #444;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.8rem;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        @media (max-width: 600px) {
-            .feed { grid-template-columns: 1fr; }
-        }
-    </style>
+    <title>Ethereal Audio - Seu Portal de Música Relaxante</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@40400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://yt3.googleusercontent.com/ytc/AIdro_n-yS7s_N3Vb5z0fS_r2C1zY8z0d0c-w=s900-c-k-c0x00ffffff-no-rj" type="image/x-icon">
 </head>
 <body>
 
-    <header>
-        <h1>ETHEREAL AUDIO</h1>
+    <header class="app-header">
+        <div class="header-content">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_n-yS7s_N3Vb5z0fS_r2C1zY8z0d0c-w=s88-c-k-c0x00ffffff-no-rj" alt="Logo Ethereal Audio" class="channel-logo">
+            <h1>Ethereal Audio</h1>
+        </div>
     </header>
 
-    <div class="feed" id="mainFeed">
-        </div>
+    <main class="app-main">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Música para Relaxar, Meditar e Focar</h2>
+                <p>Mergulhe em sons suaves, melodias calmantes e paisagens sonoras ambientais. Perfeito para estudo, sono, meditação ou simplesmente para encontrar a paz interior.</p>
+                <a href="https://youtube.com/etherealaudi" target="_blank" class="youtube-button">Visitar Canal no YouTube</a>
+            </div>
+        </section>
 
-    <script>
-        // --- CONFIGURAÇÃO ---
-        const API_KEY = 'COLE_AQUI_SUA_CHAVE_DO_GOOGLE_CLOUD'; 
-        const CHANNEL_ID = 'UC6Gz-13t_v7iP23K7fA2S5A'; // ID verificado para @etherealaudi
-        
-        async function loadContent() {
-            const feed = document.getElementById('mainFeed');
-            const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=15&type=video`;
+        <section class="video-feed-section">
+            <h3>Últimos Uploads</h3>
+            <div class="video-grid" id="videoFeed">
+                <p class="loading-message">Carregando vídeos...</p>
+            </div>
+            <button id="loadMoreButton" class="load-more-button" style="display: none;">Carregar Mais</button>
+        </section>
+    </main>
 
-            try {
-                const res = await fetch(url);
-                const data = await res.json();
+    <footer class="app-footer">
+        <p>&copy; 2024 Ethereal Audio. Todos os direitos reservados.</p>
+        <p>Desenvolvido com <span style="color: #ff0000;">&hearts;</span> e YouTube Data API.</p>
+    </footer>
 
-                if (data.items) {
-                    feed.innerHTML = '';
-                    data.items.forEach((video, index) => {
-                        
-                        // Criar card do vídeo
-                        const card = document.createElement('div');
-                        card.className = 'video-card';
-                        card.onclick = () => window.open(`https://www.youtube.com/watch?v=${video.id.videoId}`, '_blank');
-                        
-                        card.innerHTML = `
-                            <div class="thumb-container">
-                                <img src="${video.snippet.thumbnails.high.url}" alt="thumbnail">
-                            </div>
-                            <div class="video-info">
-                                <h2 class="video-title">${video.snippet.title}</h2>
-                                <div class="video-meta">Postado em: ${new Date(video.snippet.publishedAt).toLocaleDateString()}</div>
-                            </div>
-                        `;
-                        feed.appendChild(card);
-
-                        // Inserir Anúncio a cada 3 vídeos
-                        if ((index + 1) % 3 === 0) {
-                            const ad = document.createElement('div');
-                            ad.className = 'ad-row';
-                            ad.innerHTML = '<div>AD - ESPAÇO PARA PUBLICIDADE</div>';
-                            feed.appendChild(ad);
-                        }
-                    });
-                } else {
-                    feed.innerHTML = "<p style='text-align:center'>Configure sua API Key para ver os vídeos.</p>";
-                }
-            } catch (e) {
-                console.error("Erro ao carregar vídeos", e);
-            }
-        }
-
-        loadContent();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
