@@ -47,9 +47,10 @@ body {
 .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
 /* Hero Section */
+/* Reduz o espaço do Hero (Capa) */
 .hero {
     position: relative;
-    padding: 160px 20px 100px;
+    padding: 120px 20px 60px; /* Reduzi o topo e a base */
     text-align: center;
     background: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2070') no-repeat center center/cover;
 }
@@ -65,7 +66,10 @@ body {
 .hero p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 30px; }
 
 /* Video Grid */
-.content-section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+.content-section { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 30px 20px; /* Reduzi de 60px para 30px */
 .section-header { 
     display: flex; 
     align-items: center; 
@@ -76,8 +80,8 @@ body {
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Diminuí levemente o tamanho mínimo */
+    gap: 20px; /* Reduzi o espaço entre os cards */
 }
 
 /* Video Card App Style */
@@ -102,8 +106,8 @@ body {
 .thumb-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; }
 .thumb-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-.video-info { padding: 20px; }
-.video-title { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin-bottom: 12px; height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.video-info { padding: 12px; }
+.video-title { font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .video-meta { font-size: 0.85rem; color: var(--text-gray); display: flex; justify-content: space-between; }
 
 /* Ad Space Styling */
@@ -200,16 +204,8 @@ section {
     scroll-margin-top: 100px;
 }
 /* Reduz o espaçamento das seções de conteúdo */
-.content-section { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 30px 20px; /* Reduzi de 60px para 30px */
-}
 
-/* Reduz o espaço do Hero (Capa) */
-.hero {
-    position: relative;
-    padding: 120px 20px 60px; /* Reduzi o topo e a base */
-    text-align: center;
-    background: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2070') no-repeat center center/cover;
+}
+main.content-section {
+    margin-top: 80px !important; /* Reduzi de 120px para 80px */
 }
