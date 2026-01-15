@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://infohousebrasil.github.io/site-etherealaudi/sitemap.xml
