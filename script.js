@@ -1,5 +1,5 @@
 // CONFIGURATION
-const API_KEY = 'COLE_AQUI_SUA_CHAVE_DO_GOOGLE_CLOUD'; 
+const API_KEY = 'AIzaSyCXk2NyD_ZgUqwbQ56kDSdWYVVSLd0jm1g'; 
 const CHANNEL_ID = 'UC6Gz-13t_v7iP23K7fA2S5A'; 
 const AD_INTERVAL = 4; // Show AD every 4 videos
 
