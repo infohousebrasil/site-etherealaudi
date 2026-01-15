@@ -6,15 +6,28 @@ const AD_INTERVAL = 4; // Show AD every 4 videos
 let nextPageToken = '';
 const videoFeed = document.getElementById('mainVideoFeed');
 const loadMoreBtn = document.getElementById('btnLoadMore');
-
+//novo codigo
 async function fetchYouTubeData(token = '') {
-    const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=12&type=video&pageToken=${token}`;
+    // Montamos a URL base primeiro
+    let url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=12&type=video`;
+
+    // SÓ adicionamos o pageToken se ele realmente existir (não estiver vazio)
+    if (token) {
+        url += `&pageToken=${token}`;
+    }
 
     try {
         const response = await fetch(url);
         const data = await response.json();
 
-        if (token === '') videoFeed.innerHTML = ''; // Clear skeleton
+        // Se o Google devolver um erro, ele aparecerá aqui no console
+        if (data.error) {
+            console.error("Erro da API do Google:", data.error);
+            videoFeed.innerHTML = `<p style="text-align:center; grid-column:1/-1">API Error: ${data.error.message}</p>`;
+            return;
+        }
+
+        if (token === '') videoFeed.innerHTML = ''; 
 
         if (data.items) {
             renderVideos(data.items);
@@ -22,8 +35,7 @@ async function fetchYouTubeData(token = '') {
             loadMoreBtn.style.display = nextPageToken ? 'flex' : 'none';
         }
     } catch (error) {
-        console.error("API Error:", error);
-        videoFeed.innerHTML = `<p style="text-align:center; grid-column:1/-1">Connection Error. Please check your API Key.</p>`;
+        console.error("Erro de conexão:", error);
     }
 }
 
