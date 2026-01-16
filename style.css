@@ -18,6 +18,11 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
+/* BLOQUEIA A SELEÇÃO DE TEXTO (Sensação de App) */
+    -webkit-user-select: none; /* Safari e Chrome (Crucial para iPhone) */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Padrão moderno */
 }
 
 /* Header & Glassmorphism */
